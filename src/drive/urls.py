@@ -22,9 +22,11 @@ doc_patterns = [
 
 urlpatterns = [
     path('', index),
+    path('file/', include("apps.multimedia.urls")),
     path('admin/', admin.site.urls),
     path("users/", include("users.urls")),
 ]
 
 urlpatterns += doc_patterns
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
