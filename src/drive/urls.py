@@ -22,9 +22,9 @@ doc_patterns = [
 
 urlpatterns = [
     path('', index),
-    path('file/', include("apps.multimedia.urls")),
     path('admin/', admin.site.urls),
-    path("users/", include("users.urls")),
+    path('api/folder/', include(("apps.multimedia.urls", "apps.multimedia"), namespace="folders")),
+    path("api/users/", include("users.urls")),
 ]
 
 urlpatterns += doc_patterns

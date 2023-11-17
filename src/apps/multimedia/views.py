@@ -1,8 +1,9 @@
-from django.shortcuts import render
-from .models import File
+from rest_framework.viewsets import ModelViewSet
 
-# Create your views here.
-def f(request):
-    a = File.objects.all()
-    for f in a:
-        print(f.file.url)
+from apps.multimedia.models import Folder
+from apps.multimedia.serializers import FolderSerializers
+
+
+class FolderViewSet(ModelViewSet):
+    queryset = Folder.objects.all()
+    serializer_class = FolderSerializers

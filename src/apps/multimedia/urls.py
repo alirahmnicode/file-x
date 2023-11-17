@@ -1,6 +1,9 @@
-from django.urls import path
-from . import views
+from rest_framework.routers import SimpleRouter
 
-urlpatterns = [
-    path("", views.f)
-]
+from apps.multimedia.views import FolderViewSet
+
+
+router = SimpleRouter()
+
+router.register("folders", FolderViewSet, basename="folders")
+urlpatterns = [] + router.urls
