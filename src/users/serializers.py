@@ -15,10 +15,7 @@ class UserRegisterSerializer(serializers.Serializer):
         write_only=True,
     )
 
-    token = serializers.CharField(
-        label=_("Token"),
-        read_only=True
-    )
+    token = serializers.CharField(label=_("Token"), read_only=True)
 
     def validate(self, attrs):
         username = attrs.get("username")
@@ -39,3 +36,8 @@ class UserRegisterSerializer(serializers.Serializer):
 
         user = User.objects.create_user(username=username, password=password)
         return user
+
+
+class CurrentUserSerializer(serializers.Serializer):
+    username = serializers.CharField(label=_("Username"), read_only=True)
+    token = serializers.CharField(label=_("Token"), write_only=True)
