@@ -5,5 +5,5 @@ from apps.multimedia.views import FolderViewSet
 
 router = SimpleRouter()
 
-router.register("folders", FolderViewSet, basename="folders")
+router.register("", FolderViewSet, basename="folders")
 urlpatterns = [] + router.urls
