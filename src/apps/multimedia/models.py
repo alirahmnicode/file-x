@@ -9,11 +9,3 @@ class File(AuditableModel):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="files"
     )
     file = models.FileField(upload_to="documents/%Y/%m/%d")
-
-
-class Folder(AuditableModel):
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="folders"
-    )
-    title = models.CharField(max_length=256)
-    files = models.ManyToManyField(File, related_name="files", blank=True)

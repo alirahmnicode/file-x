@@ -9,12 +9,13 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
+        ("multimedia", "0001_initial"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name="File",
+            name="Folder",
             fields=[
                 (
                     "id",
@@ -27,12 +28,18 @@ class Migration(migrations.Migration):
                 ),
                 ("created_at", models.DateTimeField(auto_now_add=True)),
                 ("modified_at", models.DateTimeField(auto_now=True)),
-                ("file", models.FileField(upload_to="documents/%Y/%m/%d")),
+                ("title", models.CharField(max_length=256)),
+                (
+                    "files",
+                    models.ManyToManyField(
+                        blank=True, related_name="files", to="multimedia.file"
+                    ),
+                ),
                 (
                     "user",
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
-                        related_name="files",
+                        related_name="folders",
                         to=settings.AUTH_USER_MODEL,
                     ),
                 ),

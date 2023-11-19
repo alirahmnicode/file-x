@@ -1,9 +1,9 @@
 from rest_framework.routers import SimpleRouter
 
-from apps.multimedia.views import FileViewSet
+from apps.folders.views import FolderViewSet
 
 
 router = SimpleRouter()
 
-router.register("", FileViewSet, basename="files")
+router.register("", FolderViewSet, basename="folders")
 urlpatterns = [] + router.urls

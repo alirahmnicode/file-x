@@ -23,7 +23,8 @@ doc_patterns = [
 urlpatterns = [
     path('', index),
     path('admin/', admin.site.urls),
-    path('api/folders/', include(("apps.multimedia.urls", "apps.multimedia"), namespace="folders")),
+    path('api/folders/', include(("apps.folders.urls", "apps.folders"), namespace="folders")),
+    path('api/media/', include(("apps.multimedia.urls", "apps.multimedia"), namespace="media")),
     path("api/users/", include("users.urls")),
 ]
 

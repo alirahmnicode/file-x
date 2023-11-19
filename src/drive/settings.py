@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # local apps
     "users",
     "apps.multimedia",
+    "apps.folders",
     "drf_spectacular",
 ]
 
@@ -152,7 +153,6 @@ SPECTACULAR_SETTINGS = {
     "SERVE_INCLUDE_SCHEMA": False,
     "SCHEMA_PATH_PREFIX": r"/api/",
 }
-
 
 
 CORS_ALLOW_ALL_ORIGINS = True
