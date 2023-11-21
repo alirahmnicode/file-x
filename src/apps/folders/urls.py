@@ -1,9 +1,10 @@
 from rest_framework.routers import SimpleRouter
+from django.urls import path
 
-from apps.folders.views import FolderViewSet
+from apps.folders.views import FolderViewSet, EditFolderFilesView
 
 
 router = SimpleRouter()
 
 router.register("", FolderViewSet, basename="folders")
-urlpatterns = [] + router.urls
+urlpatterns = [path("<int:pk>/edit/files/", EditFolderFilesView.as_view())] + router.urls

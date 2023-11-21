@@ -11,3 +11,7 @@ class Folder(AuditableModel):
     )
     title = models.CharField(max_length=256)
     files = models.ManyToManyField("multimedia.File", related_name="files", blank=True)
+
+    
+    def __str__(self):
+        return f"{self.title} - {self.user.username}"
