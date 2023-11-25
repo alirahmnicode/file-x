@@ -12,3 +12,6 @@ class File(AuditableModel):
     
     def __str__(self) -> str:
         return self.file.name
+
+    class Meta:
+        ordering  = ("-created_at",)
