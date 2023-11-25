@@ -9,3 +9,6 @@ class File(AuditableModel):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="files"
     )
     file = models.FileField(upload_to="documents/%Y/%m/%d")
+    
+    def __str__(self) -> str:
+        return self.file.name
