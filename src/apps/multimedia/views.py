@@ -41,3 +41,5 @@ class RecentFilesView(ListAPIView):
         queryset = super().get_queryset()
         user_files = queryset.filter(user=self.request.user)
         return user_files[:10]        
+
+
