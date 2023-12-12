@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/folders/', include(("apps.folders.urls", "apps.folders"), namespace="folders")),
     path('api/media/', include(("apps.multimedia.urls", "apps.multimedia"), namespace="media")),
+    path("api/search/", include("apps.search.urls")),
     path("api/users/", include("users.urls")),
 ]
 

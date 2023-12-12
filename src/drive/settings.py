@@ -42,11 +42,12 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "corsheaders",
+    "drf_spectacular",
     # local apps
     "users",
     "apps.multimedia",
     "apps.folders",
-    "drf_spectacular",
+    "apps.search",
 ]
 
 MIDDLEWARE = [
