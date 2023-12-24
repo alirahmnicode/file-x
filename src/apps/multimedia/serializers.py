@@ -28,7 +28,12 @@ class UploadMultipleFileSerializer(serializers.Serializer):
         user = self.context.get("request").user
         files_list = []
 
-        files_list = [FileModel(file=file, user=user) for file in files]
+        for file in files:
+            new_file = FileModel(file=file, user=user)
+            new_file.file_format = new_file.get_file_format()
+            new_file.file_name = new_file.get_file_name()
+            new_file.file_size = new_file.get_file_size()
+            files_list.append(new_file)
 
         created_file = FileModel.objects.bulk_create(files_list)
         return created_file
