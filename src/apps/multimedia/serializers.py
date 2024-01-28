@@ -24,8 +24,8 @@ class UploadMultipleFileSerializer(serializers.Serializer):
     )
 
     def create(self, validated_data):
-        files = validated_data.get("files")
         user = self.context.get("request").user
+        files = validated_data.get("files")
         files_list = []
 
         for file in files:

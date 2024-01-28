@@ -8,4 +8,4 @@ from apps.multimedia.views import FileViewSet, RecentFilesView
 router = SimpleRouter()
 
 router.register("", FileViewSet, basename="files")
-urlpatterns = [path("recent/", RecentFilesView.as_view())] + router.urls
+urlpatterns = [path("recent/", RecentFilesView.as_view()),] + router.urls

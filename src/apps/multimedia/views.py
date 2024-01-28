@@ -3,9 +3,6 @@ from rest_framework.generics import ListAPIView
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.permissions import IsAuthenticated
 
-from apps.multimedia.models import File
-from apps.multimedia.serializers import UploadMultipleFileSerializer, FileSerializer
-
 
 class CustomFileModelViewSet(
     mixins.CreateModelMixin,
@@ -17,8 +14,12 @@ class CustomFileModelViewSet(
     pass
 
 
+from apps.multimedia.models import File as FileModel
+from apps.multimedia.serializers import UploadMultipleFileSerializer, FileSerializer
+
+
 class FileViewSet(CustomFileModelViewSet):
-    queryset = File.objects.all()
+    queryset = FileModel.objects.all()
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
@@ -33,13 +34,11 @@ class FileViewSet(CustomFileModelViewSet):
 
 
 class RecentFilesView(ListAPIView):
-    queryset = File.objects.all()
+    queryset = FileModel.objects.all()
     serializer_class = FileSerializer
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         queryset = super().get_queryset()
         user_files = queryset.filter(user=self.request.user)
-        return user_files[:10]        
-
-
+        return user_files[:10]
